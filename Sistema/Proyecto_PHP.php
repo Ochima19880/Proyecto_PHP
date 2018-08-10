@@ -15,6 +15,8 @@ define('__ROOT__', dirname(dirname(__FILE__)));
 define('SISTEMA', __ROOT__.DS.'Sistema'.DS);
 // Directorio de las Clases del Proyecto
 define('CLASE', SISTEMA.DS.'clase'.DS);
+// Directorio de los Modelos del Proyecto
+define('MODELO', SISTEMA.DS.'modelo'.DS);
 // Directorio de los modulos del Proyecto
 define('MODULO', SISTEMA.'Modulos'.DS.'');
 //// Directorio de los archivos xlsx del Proyecto
