@@ -1,4 +1,3 @@
-<?php include(MODULO.'head.php');?> 
 <body class="theme-light-blue">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -33,8 +32,8 @@
     </div>
     <!-- #END# Search Bar -->
    
-    <?php include(MODULO.'header.php');?> 
+    <?php //include(MODULO.'header.php');?> 
     
-    <?php include(MODULO.'menu.php');?>
+    <?php //include(MODULO.'menu.php');?>
 
 <section class="content">

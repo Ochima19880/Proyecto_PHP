@@ -2,17 +2,20 @@
 require_once (MODELO.'DbObjet.php');  
 class mdUsuario extends conexion implements DbObjet {
    
-    public $usuarioId;
-    public $usuario;
-    public $contrasena;
-    public $nombre;
-    public $apellido1;
-    public $apellido2;
-    public $local;
-    public $direccion;   
+    public $idUsuario;
+    public $Usuario;
+    public $Telefono;
+    public $Contrasena;
+    public $Nombre;
+    public $Apellido;
+    public $Email;   
+    public $Foto;
+    public $Habilitado;
     
+
+
     public function Delete($param) {
-        $this->Prepare("Delete From usuarios where usuario=? ",$param); 
+        $this->Prepare("Delete From usuarios where IdUsuario=? ",array($param)); 
         return $this->num_rows();
     }
 
@@ -28,34 +31,48 @@ class mdUsuario extends conexion implements DbObjet {
     }
 
     public function GetById($param) {
-        $this->Prepare("Select * From usuarios where usuario=?",$param);  
+        $this->Prepare("Select * From usuarios where idUsuario=?",array($param));  
+        $Result= $this->fetch();
+        return $Result;
+    }
+    public function GetByName($param) {
+        $this->Prepare("Select * From usuarios where Usuario=?",array($param));  
         $Result= $this->fetch();
         return $Result;
     }
     
     public function GetByIdHab($param) {
-        $this->Prepare("Select * From usuarios where usuario=? and habilitado=1",$param);  
+        
+        $this->Prepare("Select * From usuarios where idUsuario=? and Habilitado=1",array($param));  
+        $Result= $this->fetch();
+        return $Result;
+    }
+    
+    public function GetByNameHab($param) {
+        
+        $this->Prepare("Select * From usuarios where Usuario=? and habilitado=1",array($param));  
         $Result= $this->fetch();
         return $Result;
     }
 
     public function Insert($Usuario) {
-        $param=(array)$Usuario;        
-        $this->Prepare("insert into usuarios (usuario,contrasena,nombre,apellido1,apellido2,local,direccion,habilitado) " . 
-                       "values (:usuario,:contrasena,:nombre,:apellido1,:apellido2,:local,:direccion,1)",$param);
+        $param = array_diff_key (get_object_vars($Usuario), array('idUsuario'=>""));
+        
+        $this->Prepare("insert into usuarios (Usuario,Contrasena,Nombre,Apellido,Email,Foto,Telefono,Habilitado) " . 
+                       "values (:Usuario,:Contrasena,:Nombre,:Apellido,:Email,:Foto,:Telefono,:Habilitado)",$param);
         return $this->num_rows();
     }
 
     public function Update($id,$Usuario) {
-        $param=(array)$Usuario;
-        $param["usuario1"]=$id;
-        $this->Prepare("update usuarios set nombre:nombre,apellido1=:apellido1,apellido2=:apellido2,local=:local,direccion:=direccion " .
-                " where usuario=:usuario1",$param);
+        $param = array_diff_key (get_object_vars($Usuario), array('idUsuario'=>"",'Usuario'=>"",'Contrasena'=>"",'Habilitado'=>""));
+        $param["idUsuario1"]=$id;
+        
+        $this->Prepare("update proyecto_php.usuarios set Nombre=:Nombre,Apellido=:Apellido,Email=:Email,Foto=:Foto,Telefono=:Telefono where idUsuario=:idUsuario1;",$param);
         return $this->num_rows();
     }
     
     public function ValidarUsuario($Usuario) {
-        $this->Prepare("Select usuario,contrasena From usuario where usuario=? and contrasena=? and habilitado=1",array($Usuario->usuario,$Usuario->contrasena));                    
+        $this->Prepare("Select usuario,contrasena From usuarios where usuario=? and contrasena=? and habilitado=1",array($Usuario->Usuario,$Usuario->Contrasena));                    
         return $this->num_rows();
     }
     

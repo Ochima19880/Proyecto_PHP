@@ -9,10 +9,12 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ESTATICO', URLBASE.'Recursos/');
 // Directorio de las imgenes para las noticias del Proyecto
 define('IMGNOTICIAS', ESTATICO.'img/noticias/');
-// Directorio Root del Proyecto
+// Directorio de las imgenes Url
 define('__ROOT__', dirname(dirname(__FILE__)));
 // Directorio del Sistema del Proyecto
 define('SISTEMA', __ROOT__.DS.'Sistema'.DS);
+// Directorio de las imgenes
+define('IMGAGENES', __ROOT__.DS."Recursos".DS.'Imagenes'.DS);
 // Directorio de las Clases del Proyecto
 define('CLASE', SISTEMA.DS.'clase'.DS);
 // Directorio de los Modelos del Proyecto

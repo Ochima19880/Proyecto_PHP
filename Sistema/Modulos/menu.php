@@ -4,17 +4,17 @@
         <!-- User Info -->
         <div class="user-info">
             <div class="image">
-                <img src="<?php echo URLBASE?><?php echo ESTATICO?>images/user.png" width="48" height="48" alt="User" />
+                <img src="<?php echo $usuarioApp['Foto'] ?>" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                <div class="email">john.doe@example.com</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $usuarioApp['Nombre'] . " " . $usuarioApp['Apellido'] ?></div>
+                <div class="email"><?php echo $usuarioApp['Email'] ?></div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
+                        <li><a href="<?php echo URLBASE."UserProfile.php" ?>"><i class="material-icons">person</i>Perfil</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a href="<?php echo URLBASE."Cerrar-Session.php" ?>"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <ul class="list">
                 <li class="header">MENU</li>
                 <li class="active">
-                    <a href="index.html">
+                    <a href="index.php">
                         <i class="material-icons">home</i>
                         <span>Inicio</span>
                     </a>
