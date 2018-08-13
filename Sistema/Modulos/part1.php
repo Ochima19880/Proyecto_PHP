@@ -32,8 +32,8 @@
     </div>
     <!-- #END# Search Bar -->
    
-    <?php //include(MODULO.'header.php');?> 
+    <?php include(MODULO.'header.php');?> 
     
-    <?php //include(MODULO.'menu.php');?>
+    <?php include(MODULO.'menu.php');?>
 
 <section class="content">

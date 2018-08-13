@@ -67,7 +67,13 @@ class mdUsuario extends conexion implements DbObjet {
         $param = array_diff_key (get_object_vars($Usuario), array('idUsuario'=>"",'Usuario'=>"",'Contrasena'=>"",'Habilitado'=>""));
         $param["idUsuario1"]=$id;
         
-        $this->Prepare("update proyecto_php.usuarios set Nombre=:Nombre,Apellido=:Apellido,Email=:Email,Foto=:Foto,Telefono=:Telefono where idUsuario=:idUsuario1;",$param);
+        $this->Prepare("update usuarios set Nombre=:Nombre,Apellido=:Apellido,Email=:Email,Foto=:Foto,Telefono=:Telefono where idUsuario=:idUsuario1;",$param);
+        return $this->num_rows();
+    }
+    public function UpdatePassword($id,$Clave) {
+        $param["idUsuario"]=$id;
+        $param["contrasena"]=$Clave;
+        $this->Prepare("update usuarios set contrasena=:contrasena where idUsuario=:idUsuario;",$param);
         return $this->num_rows();
     }
     

@@ -64,6 +64,16 @@ class Usuario {
             }
         }
     }
+    public function CambiarPassword($user) {
+        if (isset($user)) {     
+            $count=$user->UpdatePassword($user->idUsuario, $user->Contrasena);
+            if($count>0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
 //    public function UpdateUser($data) {
 //        if (isset($_POST['ProfilePost'])) {
